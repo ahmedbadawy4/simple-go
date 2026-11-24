@@ -1,0 +1,29 @@
+# Argo CD Application: deploys charts/simple-go from this repository.
+# Apply it with: kubectl apply -f argocd/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-go
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ahmedbadawy4/simple-go.git
+    # HEAD is the default branch of the repository.
+    targetRevision: HEAD
+    path: charts/simple-go
+    helm:
+      valuesObject:
+        replicaCount: 2
+        # Turn this on when the cluster runs the Prometheus Operator.
+        serviceMonitor:
+          enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: simple-go
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

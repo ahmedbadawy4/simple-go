@@ -1,0 +1,8 @@
+apiVersion: v2
+name: simple-go
+description: A small Go HTTP service with health probes and Prometheus metrics.
+type: application
+version: 0.1.0
+# The image tag defaults to appVersion. Change it after the image for that
+# version has been pushed to the registry.
+appVersion: "0.1.0"
