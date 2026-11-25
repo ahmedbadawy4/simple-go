@@ -105,3 +105,7 @@ Makefile                      Local tasks, pinned to the kind cluster
 - The metrics are written by hand and kept in memory per pod, so counters restart from zero when a pod restarts. A larger service would use the Prometheus client library or OpenTelemetry.
 - There is no tracing.
 - There is no authentication, TLS, Ingress, autoscaling or PodDisruptionBudget. The chart exposes the service inside the cluster only.
+
+## License
+
+Apache License 2.0, see [LICENSE](LICENSE).
